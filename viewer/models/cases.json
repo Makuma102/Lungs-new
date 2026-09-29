@@ -1,0 +1,38 @@
+[
+ {
+  "id": "lung_004",
+  "note": "training case"
+ },
+ {
+  "id": "lung_014",
+  "note": "held-out test"
+ },
+ {
+  "id": "lung_075",
+  "note": "held-out test"
+ },
+ {
+  "id": "lung_065",
+  "note": "held-out test"
+ },
+ {
+  "id": "lung_041",
+  "note": "held-out test"
+ },
+ {
+  "id": "lung_053",
+  "note": "held-out test"
+ },
+ {
+  "id": "lung_071",
+  "note": "held-out test"
+ },
+ {
+  "id": "lung_022",
+  "note": "held-out test"
+ },
+ {
+  "id": "lung_033",
+  "note": "held-out test"
+ }
+]

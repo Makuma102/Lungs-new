@@ -1,0 +1,78 @@
+{
+ "patch": [
+  64,
+  96,
+  96
+ ],
+ "infer_patch": [
+  96,
+  128,
+  128
+ ],
+ "typical_volume": [
+  207,
+  162,
+  215
+ ],
+ "device": "cpu",
+ "models": {
+  "ours": {
+   "params_M": 3.176799,
+   "setting": {
+    "patch": [
+     64,
+     96,
+     96
+    ],
+    "infer": [
+     96,
+     128,
+     128
+    ],
+    "typical": [
+     207,
+     162,
+     215
+    ],
+    "batch": 2,
+    "tta": 2
+   },
+   "gflops_train_patch": 37.896781824,
+   "gflops_infer_window": 101.058084864,
+   "windows_per_case": 24,
+   "gflops_per_case_tta": 4850.788073472,
+   "sec_per_window": 0.6431359510170296,
+   "est_sec_per_case_tta": 30.87052564881742
+  },
+  "nnunet": {
+   "params_M": 30.785994,
+   "setting": {
+    "patch": [
+     80,
+     192,
+     160
+    ],
+    "infer": [
+     80,
+     192,
+     160
+    ],
+    "typical": [
+     252,
+     512,
+     512
+    ],
+    "batch": 2,
+    "tta": 8
+   },
+   "gflops_train_patch": 1119.3409536,
+   "gflops_infer_window": 1119.3409536,
+   "windows_per_case": 180,
+   "gflops_per_case_tta": 1611850.9731839998,
+   "sec_per_window": 3.4643586780002806,
+   "est_sec_per_case_tta": 4988.676496320404
+  }
+ },
+ "cpu": "Intel(R) Core(TM) i5-14600KF",
+ "threads": 4
+}

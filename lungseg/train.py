@@ -1,0 +1,220 @@
+"""Train + evaluate the small U-Net.
+
+  python -m lungseg.train --data phantom --epochs 30          # 2D, runs offline
+  python -m lungseg.train --data phantom --dim 3 --batch 2    # 3D U-Net
+  python -m lungseg.train --data msd --root data/Task06_Lung  # real CT tumors
+  python -m lungseg.train --data png --root data/cxr          # CXR lung masks
+"""
+import argparse
+import json
+import os
+import random
+import time
+
+import numpy as np
+import torch
+from torch.utils.data import DataLoader
+
+from . import data as D
+from .losses import DiceCELoss
+from .metrics import dice, hd95, iou, lesion_detection, precision, sensitivity
+from .model import ARCHS, SmallUNet, build_model, count_parameters
+from .reconstruct3d import postprocess, predict_volume, reconstruct
+
+
+def seed_all(s):
+    random.seed(s)
+    np.random.seed(s)
+    torch.manual_seed(s)
+
+
+def load(args):
+    if args.data == "phantom":
+        shape = (args.depth_slices, args.size, args.size)
+        vols = D.make_phantom_volumes(args.n_train + args.n_val + args.n_test, shape, seed=args.seed)
+        spacings = [(2.5, 1.0 * 256 / args.size, 1.0 * 256 / args.size)] * len(vols)
+    elif args.data == "msd3d":  # preprocessed by `python -m lungseg.prep_msd`
+        from .prep_msd import load_prepped
+        vols, meta = load_prepped(args.root)
+        spacings = [m["spacing"] for m in meta]
+        args.cases = [m["case"] for m in meta]
+    elif args.data == "msd":
+        vols, spacings = D.load_msd_lung(args.root, args.size, args.max_cases)
+    else:
+        vols = D.load_png_pairs(os.path.join(args.root, "images"), os.path.join(args.root, "masks"), args.size)
+        spacings = [(1.0, 1.0, 1.0)] * len(vols)
+    idx = np.random.default_rng(args.seed).permutation(len(vols))  # case-level split: no slice leakage
+    n_te = max(1, round(len(vols) * args.n_test / (args.n_train + args.n_val + args.n_test)))
+    n_va = max(1, round(len(vols) * args.n_val / (args.n_train + args.n_val + args.n_test)))
+    te, va, tr = idx[:n_te], idx[n_te:n_te + n_va], idx[n_te + n_va:]
+    if getattr(args, "n_folds", 0):  # k-fold CV: fold k is the test set; validation = first n_va of the rest
+        folds = np.array_split(idx, args.n_folds)
+        te = folds[args.fold]
+        rest = np.concatenate([f for i, f in enumerate(folds) if i != args.fold])
+        va, tr = rest[:n_va], rest[n_va:]
+    args.split = {"train": [int(i) for i in tr], "val": [int(i) for i in va], "test": [int(i) for i in te]}
+    pick = lambda ii: ([vols[i] for i in ii], [spacings[i] for i in ii])
+    return pick(tr), pick(va), pick(te)
+
+
+def evaluate(model, vols, spacings, device):
+    rows = []
+    for (img, gt), sp in zip(vols, spacings):
+        pred, _ = predict_volume(model, img, device=device)
+        pred = postprocess(pred, sp) if img.shape[0] > 1 else pred
+        r = {}
+        for name, cls in (("lung", lambda a: a >= 1), ("tumor", lambda a: a == 2)):
+            p, g = cls(pred), cls(gt)
+            r[f"{name}_dice"] = dice(p, g)
+            r[f"{name}_iou"] = iou(p, g)
+            r[f"{name}_hd95"] = hd95(p, g, sp)
+            r[f"{name}_sens"] = sensitivity(p, g)
+            r[f"{name}_prec"] = precision(p, g)
+        r["tp"], r["fn"], r["fp"] = lesion_detection(pred == 2, gt == 2)
+        r["has_tumor_gt"], r["has_tumor_pred"] = bool((gt == 2).any()), bool((pred == 2).any())
+        rows.append(r)
+    return rows
+
+
+def summarize(rows):
+    out = {}
+    for k in rows[0]:
+        if k in ("tp", "fn", "fp", "has_tumor_gt", "has_tumor_pred"):
+            continue
+        v = np.array([r[k] for r in rows], float)
+        if k.startswith("tumor"):  # tumor segmentation metrics over tumor-positive cases only
+            v = np.array([r[k] for r in rows if r["has_tumor_gt"]], float)
+        v = v[np.isfinite(v)]
+        if len(v):
+            out[k] = {"mean": float(v.mean()), "std": float(v.std()), "median": float(np.median(v))}
+    tp, fn, fp = (sum(r[k] for r in rows) for k in ("tp", "fn", "fp"))
+    out["lesion_sensitivity"] = tp / (tp + fn) if tp + fn else float("nan")
+    out["fp_per_scan"] = fp / len(rows)
+    y, yh = [r["has_tumor_gt"] for r in rows], [r["has_tumor_pred"] for r in rows]
+    tpc = sum(a and b for a, b in zip(y, yh)); tnc = sum((not a) and (not b) for a, b in zip(y, yh))
+    out["case_accuracy"] = (tpc + tnc) / len(rows)
+    # undefined (NaN), not 0, when a class is absent: e.g. MSD has no tumor-free scans
+    out["case_sensitivity"] = tpc / sum(y) if sum(y) else float("nan")
+    out["case_specificity"] = tnc / (len(y) - sum(y)) if len(y) - sum(y) else float("nan")
+    return out
+
+
+def main(argv=None):
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--data", choices=["phantom", "msd", "msd3d", "png"], default="phantom")
+    ap.add_argument("--root", default="data")
+    ap.add_argument("--out", default="runs/exp")
+    ap.add_argument("--size", type=int, default=128)
+    ap.add_argument("--depth-slices", type=int, default=32)
+    ap.add_argument("--n-train", type=int, default=24)
+    ap.add_argument("--n-val", type=int, default=4)
+    ap.add_argument("--n-test", type=int, default=8)
+    ap.add_argument("--max-cases", type=int, default=None)
+    ap.add_argument("--epochs", type=int, default=30)
+    ap.add_argument("--batch", type=int, default=16)
+    ap.add_argument("--lr", type=float, default=2e-3)
+    ap.add_argument("--arch", choices=ARCHS, default="ours", help="3D network: ours (compact U-Net) or a MONAI baseline")
+    ap.add_argument("--dim", type=int, choices=[2, 3], default=2, help="2D slice U-Net or 3D U-Net")
+    ap.add_argument("--isotropic", action="store_true", help="3D: pool all axes equally (isotropic data)")
+    ap.add_argument("--patch", type=int, nargs=3, default=None, help="3D patch size D H W")
+    ap.add_argument("--samples-per-volume", type=int, default=4)
+    ap.add_argument("--tumor-oversample", type=float, default=0.5)
+    ap.add_argument("--base", type=int, default=None, help="base width (default 16 for 2D, 12 for 3D)")
+    ap.add_argument("--seed", type=int, default=42, help="patient split (and, by default, training randomness)")
+    ap.add_argument("--train-seed", type=int, default=None, help="training randomness only (init, patches, augmentation); split stays --seed")
+    ap.add_argument("--workers", type=int, default=0)
+    ap.add_argument("--val-every", type=int, default=1)
+    ap.add_argument("--no-amp", action="store_true", help="disable mixed precision on GPU")
+    ap.add_argument("--n-folds", type=int, default=0, help="k-fold CV (0 = single split)")
+    ap.add_argument("--fold", type=int, default=0)
+    ap.add_argument("--resume", action="store_true", help="continue from <out>/last.pt if present")
+    ap.add_argument("--stop-after", type=int, default=None, help=argparse.SUPPRESS)  # tests: simulate a crash
+    args = ap.parse_args(argv)
+
+    if args.base is None:
+        args.base = 12 if args.dim == 3 else 16
+    ts = args.seed if args.train_seed is None else args.train_seed
+    seed_all(ts)
+    torch.set_num_threads(max(1, os.cpu_count() or 1))
+    if torch.cuda.is_available():
+        torch.backends.cudnn.benchmark = True
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    os.makedirs(args.out, exist_ok=True)
+    (trv, trs), (vav, vas), (tev, tes) = load(args)
+    print(f"cases train/val/test = {len(trv)}/{len(vav)}/{len(tev)}")
+
+    if args.dim == 3:
+        model = build_model(args.arch, base=args.base, isotropic=args.isotropic).to(device)
+        patch = tuple(args.patch) if args.patch else (min(32, args.depth_slices), 96, 96)
+        ds = D.PatchDataset3D(trv, patch=patch, samples_per_volume=args.samples_per_volume,
+                              tumor_oversample=args.tumor_oversample, seed=ts)
+    else:
+        model = SmallUNet(base=args.base).to(device)
+        ds = D.SliceDataset(trv, augment=True, seed=ts)
+    print(f"{type(model).__name__} params: {count_parameters(model):,}")
+    dl = DataLoader(ds, batch_size=args.batch, shuffle=True, num_workers=args.workers, drop_last=True)
+    crit = DiceCELoss(ce_weight=[0.5, 1.0, 3.0]).to(device)
+    opt = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=1e-4)
+    sched = torch.optim.lr_scheduler.OneCycleLR(opt, args.lr, total_steps=args.epochs * len(dl))
+
+    use_amp = device == "cuda" and not args.no_amp  # mixed precision on GPU only; CPU path unchanged
+    scaler = torch.amp.GradScaler("cuda", enabled=use_amp)
+    best, log, start = -1.0, [], 0
+    last_p = os.path.join(args.out, "last.pt")
+    if args.resume and os.path.exists(last_p):  # survive container restarts
+        ck = torch.load(last_p, weights_only=False)
+        model.load_state_dict(ck["model"]); opt.load_state_dict(ck["opt"]); sched.load_state_dict(ck["sched"])
+        best, log, start = ck["best"], ck["log"], ck["epoch"] + 1
+        torch.set_rng_state(ck["torch_rng"]); np.random.set_state(ck["np_rng"])
+        if hasattr(ds, "rng"):
+            ds.rng.bit_generator.state = ck["ds_rng"]
+        print(f"resumed from epoch {ck['epoch']} (best val {best:.3f})", flush=True)
+
+    def checkpoint(ep):
+        torch.save({"model": model.state_dict(), "opt": opt.state_dict(), "sched": sched.state_dict(),
+                    "epoch": ep, "best": best, "log": log, "torch_rng": torch.get_rng_state(),
+                    "np_rng": np.random.get_state(), "ds_rng": getattr(getattr(ds, "rng", None), "bit_generator", None)
+                    and ds.rng.bit_generator.state, "args": vars(args)}, last_p + ".tmp")
+        os.replace(last_p + ".tmp", last_p)  # atomic: a restart mid-save cannot corrupt it
+
+    for ep in range(start, args.epochs):
+        model.train(); t0 = time.time(); tot = 0.0
+        for x, y in dl:
+            x, y = x.to(device), y.to(device)
+            opt.zero_grad()
+            with torch.autocast(device_type="cuda", dtype=torch.float16, enabled=use_amp):
+                loss = crit(model(x), y)
+            scaler.scale(loss).backward()
+            scaler.unscale_(opt)
+            torch.nn.utils.clip_grad_norm_(model.parameters(), 12.0)
+            scaler.step(opt); scaler.update(); sched.step(); tot += loss.item()
+        if (ep + 1) % args.val_every and ep != args.epochs - 1:
+            print(f"ep {ep:3d} loss {tot / len(dl):.4f} ({time.time() - t0:.0f}s)", flush=True)
+            log.append({"epoch": ep, "loss": tot / len(dl), "sec": time.time() - t0})
+            checkpoint(ep)
+            continue
+        s = summarize(evaluate(model, vav, vas, device))
+        score = (s["lung_dice"]["mean"] + s.get("tumor_dice", {"mean": 0})["mean"]) / 2
+        log.append({"epoch": ep, "loss": tot / len(dl), "val_score": score, "sec": time.time() - t0})
+        print(f"ep {ep:3d} loss {tot / len(dl):.4f} val lung {s['lung_dice']['mean']:.3f} "
+              f"tumor {s.get('tumor_dice', {'mean': float('nan')})['mean']:.3f} ({time.time() - t0:.0f}s)", flush=True)
+        if score > best:
+            best = score
+            torch.save({"model": model.state_dict(), "args": vars(args)}, os.path.join(args.out, "best.pt"))
+        checkpoint(ep)
+        if args.stop_after is not None and ep >= args.stop_after:
+            return None  # simulated interruption (tests only)
+
+    model.load_state_dict(torch.load(os.path.join(args.out, "best.pt"))["model"])
+    res = summarize(evaluate(model, tev, tes, device))
+    json.dump({"test": res, "log": log, "params": count_parameters(model), "args": vars(args)},
+              open(os.path.join(args.out, "results.json"), "w"), indent=2, default=float)
+    print(json.dumps(res, indent=2, default=float))
+    if tev[0][0].shape[0] > 1:
+        _, rep = reconstruct(model, tev[0][0], tes[0], os.path.join(args.out, "case0"), device)
+        print("3D report:", json.dumps(rep)[:400])
+    return res
+
+
+if __name__ == "__main__":
+    main()

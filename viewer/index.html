@@ -1,0 +1,318 @@
+<meta charset="utf-8">
+<title>Lung Mesh Inspector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#e9edf0; --panel:#f6f8f9; --panel-2:#e3e8ec; --line:#c5ced5; --ink:#18232b; --ink-2:#51616d;
+  --accent:#0f7c8c; --viewport:#cfd8e3; --viewport-2:#eef2f6; --ok:#2f8a4f; --hot:#d2531f;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --bg:#0d1216; --panel:#141b21; --panel-2:#1b242b; --line:#2a3640; --ink:#dde6ec; --ink-2:#8c9ca8;
+  --accent:#4cc1d0; --viewport:#0e141a; --viewport-2:#1d2a36; --ok:#5cc47f; --hot:#ff8446;
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0d1216; --panel:#141b21; --panel-2:#1b242b; --line:#2a3640; --ink:#dde6ec; --ink-2:#8c9ca8;
+  --accent:#4cc1d0; --viewport:#0e141a; --viewport-2:#1d2a36; --ok:#5cc47f; --hot:#ff8446;
+}
+[hidden]{display:none!important}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font:13px/1.45 "IBM Plex Sans",system-ui,sans-serif}
+.app{display:grid;grid-template-columns:260px 1fr 290px;grid-template-rows:auto 1fr auto;height:100%;min-height:600px}
+header{grid-column:1/-1;display:flex;align-items:center;gap:14px;padding:8px 16px;border-bottom:1px solid var(--line);background:var(--panel);flex-wrap:wrap}
+header h1{font-size:14px;font-weight:600;margin:0}
+header .file{font:12px "IBM Plex Mono",ui-monospace,monospace;color:var(--ink-2)}
+header select{margin-left:auto;background:var(--panel-2);color:var(--ink);border:1px solid var(--line);border-radius:4px;padding:4px 8px;font:500 12px "IBM Plex Mono",monospace}
+aside{background:var(--panel);overflow:auto;padding:12px 14px;display:flex;flex-direction:column;gap:16px}
+aside.left{border-right:1px solid var(--line)} aside.right{border-left:1px solid var(--line)}
+h2{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-2);margin:0 0 6px}
+.tree{display:flex;flex-direction:column;gap:1px}
+.grp{font:600 11px "IBM Plex Sans",sans-serif;color:var(--ink-2);padding:6px 6px 2px}
+.node{display:grid;grid-template-columns:16px 12px 1fr auto;align-items:center;gap:8px;padding:3px 6px;border-radius:3px;cursor:pointer}
+.node:hover{background:var(--panel-2)}
+.node .sw{width:12px;height:12px;border-radius:2px;border:1px solid rgba(0,0,0,.15)}
+.node .n{font-size:12.5px}
+.node .c{font:11px "IBM Plex Mono",monospace;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.node.off .n{color:var(--ink-2)}
+.ctl{display:grid;grid-template-columns:1fr auto;gap:4px 8px;align-items:center}
+.ctl label{color:var(--ink-2)} .ctl output{font:12px "IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+.ctl input[type=range]{grid-column:1/-1;width:100%;accent-color:var(--accent)}
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.tool{background:var(--panel-2);border:1px solid var(--line);color:var(--ink);border-radius:3px;padding:6px 4px;font:500 11px "IBM Plex Sans",sans-serif;cursor:pointer}
+.tool:hover{border-color:var(--accent)}
+.check{display:flex;align-items:center;gap:8px}
+input{accent-color:var(--accent)}
+.tool:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.vp{position:relative;background:linear-gradient(180deg,var(--viewport-2),var(--viewport));overflow:hidden;min-height:340px}
+.vp canvas{display:block;width:100%;height:100%}
+.hud{position:absolute;left:12px;top:10px;font:11px "IBM Plex Mono",monospace;color:var(--ink-2);pointer-events:none;line-height:1.6}
+.orient{position:absolute;font:600 22px "IBM Plex Sans",sans-serif;color:var(--ink);opacity:.75;pointer-events:none;transform:translate(-50%,-50%)}
+.loading{position:absolute;inset:0;display:grid;place-items:center;font:12px "IBM Plex Mono",monospace;color:var(--ink-2);background:var(--viewport)}
+dl{display:grid;grid-template-columns:1fr auto;gap:3px 12px;margin:0}
+dt{color:var(--ink-2)} dd{margin:0;font:12px "IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;text-align:right}
+.les{border:1px solid var(--line);border-left:3px solid var(--hot);border-radius:3px;padding:8px 10px;display:flex;flex-direction:column;gap:4px;background:var(--panel-2)}
+.les .t{display:flex;justify-content:space-between;font-weight:600;gap:8px}
+.pill{font:500 10px "IBM Plex Mono",monospace;padding:1px 6px;border-radius:9px;border:1px solid currentColor;white-space:nowrap}
+.pill.hot{color:var(--hot)} .pill.ok{color:var(--ok)}
+.note{font-size:11px;color:var(--ink-2);border-top:1px solid var(--line);padding-top:10px;margin:0}
+footer{grid-column:1/-1;display:flex;gap:20px;padding:5px 16px;border-top:1px solid var(--line);background:var(--panel);font:11px "IBM Plex Mono",monospace;color:var(--ink-2);flex-wrap:wrap}
+@media (max-width:900px){
+  .app{grid-template-columns:1fr;grid-template-rows:auto 62vh auto auto auto;height:auto}
+  .vp{grid-row:2} aside.left{grid-row:3;border-right:0;border-top:1px solid var(--line)}
+  aside.right{grid-row:4;border-left:0;border-top:1px solid var(--line)} footer{grid-row:5}
+  header,aside,footer{padding-inline:16px}
+}
+</style>
+
+<div class="app">
+  <header>
+    <h1>Lung Mesh Inspector</h1>
+    <span class="file" id="file">MSD Task06_Lung · real CT</span>
+    <label for="case" class="file">Scan</label>
+    <select id="case" style="margin-left:0"></select>
+  </header>
+
+  <aside class="left">
+    <section>
+      <h2>Structures</h2>
+      <div class="tree" id="tree"></div>
+    </section>
+    <section>
+      <h2>Display</h2>
+      <div class="ctl">
+        <label for="op">Lobe opacity</label><output id="op-o">0.22</output>
+        <input type="range" id="op" min="0.03" max="1" step="0.01" value="0.22">
+        <label for="clip">Coronal section (A→P)</label><output id="clip-o">off</output>
+        <input type="range" id="clip" min="0" max="100" step="1" value="100">
+      </div>
+      <div style="height:8px"></div>
+      <label class="check"><input type="checkbox" id="wire"> Wireframe</label>
+      <label class="check"><input type="checkbox" id="spin"> Turntable</label>
+    </section>
+    <section>
+      <h2>Views</h2>
+      <div class="tools">
+        <button class="tool" data-view="A">Anterior</button>
+        <button class="tool" data-view="P">Posterior</button>
+        <button class="tool" data-view="R">Right</button>
+        <button class="tool" data-view="L">Left</button>
+        <button class="tool" data-view="S">Superior</button>
+        <button class="tool" data-view="tumor">Tumor</button>
+      </div>
+    </section>
+  </aside>
+
+  <main class="vp" id="vp">
+    <div class="hud">rotate: drag · pan: right-drag · zoom: wheel</div>
+    <div class="orient" id="o-r">R</div><div class="orient" id="o-l">L</div><div class="orient" id="o-s">S</div>
+    <div class="loading" id="loading">loading scan…</div>
+  </main>
+
+  <aside class="right">
+    <section><h2>Scan</h2><dl id="scan"></dl></section>
+    <section><h2>Tumor</h2><div id="lesions" style="display:flex;flex-direction:column;gap:6px"></div></section>
+    <section><h2>Airway tree</h2><dl id="airway"></dl></section>
+    <section><h2>Lobe volumes</h2><dl id="lobes"></dl></section>
+    <p class="note" id="prov"></p>
+  </aside>
+
+  <footer><span id="st-tris">tris –</span><span id="st-sp">spacing –</span><span id="st-cam">view –</span></footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function(){
+const $ = id => document.getElementById(id);
+// Structure catalogue: group, label, colour (Slicer-like lobe palette), material kind
+const CAT = [
+  ["Lungs", "lung_upper_lobe_right", "Right upper lobe", "#8fb8de", "lobe"],
+  ["Lungs", "lung_middle_lobe_right", "Right middle lobe", "#7ccaa9", "lobe"],
+  ["Lungs", "lung_lower_lobe_right", "Right lower lobe", "#b7a3dc", "lobe"],
+  ["Lungs", "lung_upper_lobe_left", "Left upper lobe", "#e9c585", "lobe"],
+  ["Lungs", "lung_lower_lobe_left", "Left lower lobe", "#e6a0ab", "lobe"],
+  ["Airway", "airway", "Trachea & bronchi", "#5f9e5b", "solid"],
+  ["Airway", "centerline", "Centreline & endpoints", "#39d353", "line"],
+  ["Vessels", "arteries", "Pulmonary arteries", "#3f6fd1", "solid"],
+  ["Vessels", "veins", "Pulmonary veins", "#c8434a", "solid"],
+  ["Vessels", "vessels", "Pulmonary vessels", "#b8474a", "solid"],
+  ["Tumor", "tumor_gt", "Tumor, expert label", "#ff7a1a", "solid"],
+  ["Tumor", "tumor_pred", "Tumor, 3D U-Net", "#ffd21f", "wire"],
+];
+const vp = $("vp");
+const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.localClippingEnabled = true;
+vp.insertBefore(renderer.domElement, vp.firstChild);
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(30, 1, 1, 8000);
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+scene.add(new THREE.HemisphereLight(0xffffff, 0x404a55, 0.85));
+const key = new THREE.DirectionalLight(0xffffff, 0.75); camera.add(key); key.position.set(200, 300, 100);
+scene.add(camera);
+const clip = new THREE.Plane(new THREE.Vector3(0, -1, 0), 1e6);
+const root = new THREE.Group(); scene.add(root);
+const objs = {}; const state = {}; let data = null, center = new THREE.Vector3(), radius = 250, box = null;
+
+function mat(kind, color){
+  const c = new THREE.Color(color);
+  if (kind === "lobe") return new THREE.MeshStandardMaterial({color:c, transparent:true, opacity:+$("op").value, depthWrite:false, side:THREE.DoubleSide, roughness:.6, clippingPlanes:[clip]});
+  if (kind === "wire") return new THREE.MeshBasicMaterial({color:c, wireframe:true, transparent:true, opacity:.8, clippingPlanes:[clip]});
+  return new THREE.MeshStandardMaterial({color:c, roughness:.45, metalness:.05, clippingPlanes:[clip]});
+}
+function b64(s, T){ const b = atob(s), u = new Uint8Array(b.length); for (let i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return new T(u.buffer); }
+
+function build(d){
+  root.clear(); for (const k in objs) delete objs[k];
+  let tris = 0;
+  for (const [, key, , color, kind] of CAT){
+    if (key === "centerline"){
+      const cl = d.centerline; if (!cl || !cl.points.length) continue;
+      const g = new THREE.Group();
+      const pos = new Float32Array(cl.edges.length * 6);
+      cl.edges.forEach(([a, b], i) => { pos.set(cl.points[a], i*6); pos.set(cl.points[b], i*6+3); });
+      const lg = new THREE.BufferGeometry(); lg.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+      g.add(new THREE.LineSegments(lg, new THREE.LineBasicMaterial({color, clippingPlanes:[clip], depthTest:false, transparent:true})));
+      const sg = new THREE.SphereGeometry(1.8, 12, 8), sm = new THREE.MeshStandardMaterial({color:"#f07a6a", roughness:.4, clippingPlanes:[clip]});
+      const inst = new THREE.InstancedMesh(sg, sm, cl.endpoints.length);
+      const m4 = new THREE.Matrix4();
+      cl.endpoints.forEach((e, i) => { m4.makeTranslation(...cl.points[e]); inst.setMatrixAt(i, m4); });
+      g.add(inst); g.renderOrder = 5;
+      objs[key] = g; root.add(g); continue;
+    }
+    const m = d.meshes[key]; if (!m) continue;
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute("position", new THREE.BufferAttribute(b64(m.v, Float32Array), 3));
+    geo.setIndex(new THREE.BufferAttribute(b64(m.f, Uint32Array), 1));
+    geo.computeVertexNormals();
+    const mesh = new THREE.Mesh(geo, mat(kind, color));
+    mesh.renderOrder = kind === "lobe" ? 3 : 1; mesh.userData.kind = kind;
+    objs[key] = mesh; root.add(mesh); tris += m.nf;
+  }
+  // reset the previous case's offset first: expandByObject uses world coordinates
+  root.position.set(0, 0, 0); root.rotation.set(0, 0, 0); root.updateMatrixWorld(true);
+  box = new THREE.Box3();
+  for (const k in objs) if (k.startsWith("lung_")) box.expandByObject(objs[k]);
+  if (box.isEmpty()) box.setFromObject(root);
+  box.getCenter(center); radius = box.getSize(new THREE.Vector3()).length() / 2;
+  root.position.copy(center).multiplyScalar(-1); root.rotation.set(0, 0, 0);
+  $("st-tris").textContent = "triangles " + tris.toLocaleString() + " (web LOD)";
+  $("st-sp").textContent = "voxel " + d.report.spacing_mm.map(s => s.toFixed(2)).join(" × ") + " mm";
+  tree(); vis(); report(d.report); setView("A");
+}
+
+function tree(){
+  const t = $("tree"); t.innerHTML = ""; let grp = null;
+  for (const [g, key, label, color] of CAT){
+    if (!objs[key]) continue;
+    if (g !== grp){ grp = g; const h = document.createElement("div"); h.className = "grp"; h.textContent = g; t.appendChild(h); }
+    if (!(key in state)) state[key] = !["vessels", "arteries", "veins"].includes(key);
+    const s = data.report.structures[key];
+    const row = document.createElement("label"); row.className = "node" + (state[key] ? "" : " off");
+    row.innerHTML = `<input type="checkbox" id="s-${key}" ${state[key] ? "checked" : ""}><span class="sw" style="background:${color}"></span><span class="n">${label}</span><span class="c">${s ? s.volume_ml.toFixed(s.volume_ml < 10 ? 2 : 0) + " mL" : ""}</span>`;
+    row.querySelector("input").onchange = e => { state[key] = e.target.checked; row.classList.toggle("off", !e.target.checked); vis(); };
+    t.appendChild(row);
+  }
+}
+function vis(){ for (const k in objs) objs[k].visible = !!state[k]; }
+
+const fmt = (x, d=2) => x == null || Number.isNaN(x) ? "–" : (+x).toFixed(d);
+const pretty = k => (CAT.find(c => c[1] === k) || [0, 0, k])[2];
+function dl(el, rows){ el.innerHTML = rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join(""); }
+function report(r){
+  const lungs = Object.entries(r.structures).filter(([k]) => k.startsWith("lung_"));
+  const total = lungs.reduce((a, [, v]) => a + v.volume_ml, 0);
+  dl($("scan"), [["Case", r.case.replace(".nii.gz", "")], ["Total lung volume", (total/1000).toFixed(2) + " L"],
+    ...["arteries", "veins", "vessels"].filter(k => r.structures[k]).map(k => [pretty(k) + " volume", r.structures[k].volume_ml.toFixed(0) + " mL"])]);
+  dl($("lobes"), lungs.map(([k, v]) => [pretty(k), `${v.volume_ml.toFixed(0)} mL · ${(100*v.volume_ml/total).toFixed(0)}%`]));
+  const a = r.airway_tree;
+  dl($("airway"), a ? [["Centreline length", a.length_mm.toFixed(0) + " mm"], ["Branch points", a.n_branchpoints], ["Terminal endpoints", a.n_endpoints], ["Deepest generation", a.max_generation]] : [["Airway", "not segmented"]]);
+  const L = [];
+  for (const t of ["tumor_gt", "tumor_pred"]){
+    const x = r[t]; if (!x) continue;
+    for (const [i, l] of x.lesions.slice(0, 3).entries()){
+      L.push(`<div class="les" style="${t === "tumor_pred" ? "border-left-color:#ffd21f" : ""}"><div class="t"><span>${t === "tumor_gt" ? "Expert label" : "3D U-Net"} · lesion ${i+1}</span><span class="pill hot">${l.equiv_diameter_mm >= 8 ? "≥8 mm" : l.equiv_diameter_mm >= 6 ? "6–8 mm" : "<6 mm"}</span></div>
+        <dl><dt>Volume</dt><dd>${fmt(l.volume_ml)} mL</dd><dt>Equiv. diameter</dt><dd>${fmt(l.equiv_diameter_mm, 1)} mm</dd>
+        <dt>Location</dt><dd>${i === 0 ? pretty(x.lobe) : "–"}</dd><dt>Centroid (RAS)</dt><dd>${l.centroid_ras_mm.map(v => v.toFixed(0)).join(", ")}</dd></dl></div>`);
+    }
+    if (x.lesions.length > 3) L.push(`<p class="note" style="border:0;padding:0">+${x.lesions.length - 3} smaller lesions</p>`);
+  }
+  if (r.pred_metrics) L.push(`<dl><dt>U-Net vs expert Dice</dt><dd>${fmt(r.pred_metrics.dice, 3)}</dd><dt>HD95</dt><dd>${fmt(r.pred_metrics.hd95_mm, 1)} mm</dd>
+    <dt>Split</dt><dd>${r.pred_metrics.split === "test" ? "held-out test" : "used in training"}</dd></dl>`);
+  $("lesions").innerHTML = L.join("") || `<p class="note" style="border:0;padding:0">No tumor label.</p>`;
+  $("prov").textContent = "Real CT from the Medical Segmentation Decathlon (Task06 Lung, CC-BY-SA 4.0). Lobes, airways, arteries and veins from TotalSegmentator; tumor from the expert label and our 3D U-Net. Research prototype, not for diagnosis.";
+}
+
+const DIRS = {A:[0,1,0], P:[0,-1,0], R:[1,0,0], L:[-1,0,0], S:[0,0.001,1]};
+function setView(v){
+  let tgt = new THREE.Vector3(), dist = radius * 3.2, dir = new THREE.Vector3(...(DIRS[v] || DIRS.A)).normalize();
+  if (v === "tumor"){
+    const t = objs.tumor_gt || objs.tumor_pred; if (!t) return;
+    const b = new THREE.Box3().setFromObject(t); b.getCenter(tgt);
+    dist = Math.max(90, b.getSize(new THREE.Vector3()).length() * 5); dir = new THREE.Vector3(0.5, 1, 0.35).normalize();
+  }
+  root.rotation.set(0, 0, 0); $("spin").checked = false;
+  camera.up.set(0, 0, 1); controls.target.copy(tgt);
+  camera.position.copy(tgt).addScaledVector(dir, dist); controls.update();
+  $("st-cam").textContent = "view " + ({A:"anterior", P:"posterior", R:"right lateral", L:"left lateral", S:"superior", tumor:"tumor close-up"})[v];
+}
+
+// orientation letters: project patient R / L / S directions from the target to screen
+const tmp = new THREE.Vector3();
+function orient(){
+  const w = vp.clientWidth, h = vp.clientHeight;
+  if (!box) return;
+  const half = box.getSize(new THREE.Vector3()).multiplyScalar(0.5);
+  const put = (id, dir) => {
+    const reach = Math.abs(dir[0]) * half.x * 1.12 + Math.abs(dir[2]) * half.z * 1.12;
+    tmp.set(0, 0, 0).addScaledVector(new THREE.Vector3(...dir).applyEuler(root.rotation), reach).project(camera);
+    const el = $(id); el.style.left = (tmp.x * .5 + .5) * w + "px"; el.style.top = (-tmp.y * .5 + .5) * h + "px";
+    el.hidden = tmp.z > 1;
+  };
+  put("o-r", [1, 0, 0]); put("o-l", [-1, 0, 0]); put("o-s", [0, 0, 1]);
+}
+
+function resize(){ const w = vp.clientWidth, h = vp.clientHeight; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); }
+new ResizeObserver(resize).observe(vp);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)");
+(function loop(){
+  requestAnimationFrame(loop);
+  if ($("spin").checked && !reduce.matches) root.rotation.z += 0.004;
+  controls.update(); renderer.render(scene, camera); orient();
+})();
+
+$("op").oninput = e => { const o = +e.target.value; $("op-o").textContent = o.toFixed(2);
+  for (const k in objs) if (objs[k].userData.kind === "lobe"){ objs[k].material.opacity = o; objs[k].material.depthWrite = o > .95; } };
+$("wire").onchange = e => { for (const k in objs) if (objs[k].material && objs[k].userData.kind !== "wire") objs[k].material.wireframe = e.target.checked; };
+$("clip").oninput = e => {
+  const f = +e.target.value / 100;
+  if (f >= 1 || !box){ clip.constant = 1e6; $("clip-o").textContent = "off"; return; }
+  // keep tissue posterior to the plane; plane sweeps from anterior (max y) to posterior (min y)
+  const y = box.max.y - f * (box.max.y - box.min.y) - center.y;
+  clip.constant = y; $("clip-o").textContent = `y ${(y + center.y).toFixed(0)} mm`;
+};
+document.querySelectorAll("[data-view]").forEach(b => b.onclick = () => setView(b.dataset.view));
+
+let token = 0;
+async function load(c){
+  const my = ++token;
+  $("loading").hidden = false; $("loading").textContent = `loading ${c}…`;
+  try {
+    const r = await fetch(`models/${c}.json`); if (!r.ok) throw new Error(r.status);
+    const d = await r.json(); if (my !== token) return;  // a newer selection superseded this one
+    data = d; build(data); $("loading").hidden = true;
+    $("file").textContent = `MSD Task06_Lung · ${c} · real CT`;
+  } catch (e){ $("loading").textContent = `Could not load ${c} (${e.message}).`; }
+}
+fetch("models/cases.json").then(r => r.json()).then(list => {
+  const sel = $("case");
+  sel.innerHTML = list.map(c => `<option value="${c.id}">${c.id}${c.note ? " · " + c.note : ""}</option>`).join("");
+  sel.onchange = () => load(sel.value);
+  load(list[0].id);
+}).catch(e => { $("loading").textContent = "Could not load the case list: " + e.message; });
+})();
+</script>

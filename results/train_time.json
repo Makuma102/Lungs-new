@@ -1,0 +1,22 @@
+{
+ "ours": {
+  "folds": 5,
+  "gpu_hours_per_fold": 0.12270724594593048,
+  "gpu_hours_total": 0.5793593860997094
+ },
+ "swinunetr": {
+  "folds": 5,
+  "gpu_hours_per_fold": 0.40571402609348295,
+  "gpu_hours_total": 2.037610734899839
+ },
+ "v2_anatomical": {
+  "folds": 5,
+  "gpu_hours_per_fold": 0.11744459046257867,
+  "gpu_hours_total": 0.6131729455126655
+ },
+ "nnunet": {
+  "folds": 5,
+  "gpu_hours_per_fold": 4.247044444444445,
+  "gpu_hours_total": 21.929575
+ }
+}

@@ -1,0 +1,10 @@
+{
+ "ours": {
+  "idle_sec_per_epoch": 23.11756408214569,
+  "idle_gpu_hours_per_fold_20ep": 0.12843091156747605
+ },
+ "swinunetr": {
+  "idle_sec_per_epoch": 77.21946978569031,
+  "idle_gpu_hours_per_fold_20ep": 0.4289970543649462
+ }
+}

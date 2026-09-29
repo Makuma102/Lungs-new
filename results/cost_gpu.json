@@ -1,0 +1,141 @@
+{
+ "patch": [
+  64,
+  96,
+  96
+ ],
+ "infer_patch": [
+  96,
+  128,
+  128
+ ],
+ "typical_volume": [
+  207,
+  162,
+  215
+ ],
+ "device": "cuda",
+ "models": {
+  "ours": {
+   "params_M": 3.176799,
+   "setting": {
+    "patch": [
+     64,
+     96,
+     96
+    ],
+    "infer": [
+     96,
+     128,
+     128
+    ],
+    "typical": [
+     207,
+     162,
+     215
+    ],
+    "batch": 2,
+    "tta": 2
+   },
+   "gflops_train_patch": 37.896781824,
+   "gflops_infer_window": 101.058084864,
+   "windows_per_case": 24,
+   "gflops_per_case_tta": 4850.788073472,
+   "sec_per_window": 0.01527218401315622,
+   "est_sec_per_case_tta": 0.7330648326314986,
+   "peak_mem_GB_infer": 0.592223232,
+   "peak_mem_GB_train_step": 0.559791104
+  },
+  "swinunetr": {
+   "params_M": 62.186757,
+   "setting": {
+    "patch": [
+     64,
+     96,
+     96
+    ],
+    "infer": [
+     96,
+     128,
+     128
+    ],
+    "typical": [
+     207,
+     162,
+     215
+    ],
+    "batch": 2,
+    "tta": 2
+   },
+   "gflops_train_patch": 426.762377088,
+   "gflops_infer_window": 1138.269344256,
+   "windows_per_case": 24,
+   "gflops_per_case_tta": 54636.928524288,
+   "sec_per_window": 0.16189013901748694,
+   "est_sec_per_case_tta": 7.770726672839373,
+   "peak_mem_GB_infer": 3.041106432,
+   "peak_mem_GB_train_step": 6.623989248
+  },
+  "attention_unet": {
+   "params_M": 5.860767,
+   "setting": {
+    "patch": [
+     64,
+     96,
+     96
+    ],
+    "infer": [
+     96,
+     128,
+     128
+    ],
+    "typical": [
+     207,
+     162,
+     215
+    ],
+    "batch": 2,
+    "tta": 2
+   },
+   "gflops_train_patch": 207.114338304,
+   "gflops_infer_window": 552.304902144,
+   "windows_per_case": 24,
+   "gflops_per_case_tta": 26510.635302912,
+   "sec_per_window": 0.05914506199769676,
+   "est_sec_per_case_tta": 2.8389629758894444,
+   "peak_mem_GB_infer": 1.909582336,
+   "peak_mem_GB_train_step": 1.601419776
+  },
+  "nnunet": {
+   "params_M": 30.785994,
+   "setting": {
+    "patch": [
+     80,
+     192,
+     160
+    ],
+    "infer": [
+     80,
+     192,
+     160
+    ],
+    "typical": [
+     252,
+     512,
+     512
+    ],
+    "batch": 2,
+    "tta": 8
+   },
+   "gflops_train_patch": 1119.3409536,
+   "gflops_infer_window": 1119.3409536,
+   "windows_per_case": 180,
+   "gflops_per_case_tta": 1611850.9731839998,
+   "sec_per_window": 0.0861560310004279,
+   "est_sec_per_case_tta": 124.06468464061618,
+   "peak_mem_GB_infer": 2.58765568,
+   "peak_mem_GB_train_step": 5.760500224
+  }
+ },
+ "gpu": "NVIDIA GeForce RTX 5070"
+}

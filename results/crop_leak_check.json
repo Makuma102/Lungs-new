@@ -1,0 +1,3805 @@
+{
+ "summary": {
+  "threshold": {
+   "n_box_changed": 2,
+   "n_cases_tumor_outside": 1,
+   "tumor_vox_outside_total": 756,
+   "tumor_vox_total": 1765281,
+   "cases_changed": [
+    "lung_028",
+    "lung_037"
+   ]
+  },
+  "anat": {
+   "n_box_changed": 1,
+   "n_cases_tumor_outside": 0,
+   "tumor_vox_outside_total": 0,
+   "tumor_vox_total": 1765281,
+   "cases_changed": [
+    "lung_028"
+   ]
+  }
+ },
+ "cases": [
+  {
+   "case": "lung_001",
+   "tumor_vox": 2719,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      62,
+      122,
+      0
+     ],
+     [
+      461,
+      399,
+      304
+     ]
+    ],
+    "box_label_free": [
+     [
+      62,
+      122,
+      0
+     ],
+     [
+      461,
+      399,
+      304
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      65,
+      123,
+      21
+     ],
+     [
+      459,
+      398,
+      300
+     ]
+    ],
+    "box_label_free": [
+     [
+      65,
+      123,
+      21
+     ],
+     [
+      459,
+      398,
+      300
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_003",
+   "tumor_vox": 1324,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      73,
+      136,
+      10
+     ],
+     [
+      444,
+      418,
+      288
+     ]
+    ],
+    "box_label_free": [
+     [
+      73,
+      136,
+      10
+     ],
+     [
+      444,
+      418,
+      288
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      74,
+      135,
+      47
+     ],
+     [
+      441,
+      399,
+      281
+     ]
+    ],
+    "box_label_free": [
+     [
+      74,
+      135,
+      47
+     ],
+     [
+      441,
+      399,
+      281
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_004",
+   "tumor_vox": 1547,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      43,
+      113,
+      20
+     ],
+     [
+      469,
+      431,
+      276
+     ]
+    ],
+    "box_label_free": [
+     [
+      43,
+      113,
+      20
+     ],
+     [
+      469,
+      431,
+      276
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      46,
+      112,
+      43
+     ],
+     [
+      470,
+      407,
+      269
+     ]
+    ],
+    "box_label_free": [
+     [
+      46,
+      112,
+      43
+     ],
+     [
+      470,
+      407,
+      269
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_005",
+   "tumor_vox": 16625,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      28,
+      66,
+      0
+     ],
+     [
+      486,
+      384,
+      329
+     ]
+    ],
+    "box_label_free": [
+     [
+      28,
+      66,
+      0
+     ],
+     [
+      486,
+      384,
+      329
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      31,
+      68,
+      82
+     ],
+     [
+      485,
+      382,
+      325
+     ]
+    ],
+    "box_label_free": [
+     [
+      31,
+      68,
+      82
+     ],
+     [
+      485,
+      382,
+      325
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_006",
+   "tumor_vox": 7050,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      79,
+      114,
+      82
+     ],
+     [
+      445,
+      412,
+      567
+     ]
+    ],
+    "box_label_free": [
+     [
+      79,
+      114,
+      82
+     ],
+     [
+      445,
+      412,
+      567
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      81,
+      115,
+      131
+     ],
+     [
+      444,
+      388,
+      532
+     ]
+    ],
+    "box_label_free": [
+     [
+      81,
+      115,
+      131
+     ],
+     [
+      444,
+      388,
+      532
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_009",
+   "tumor_vox": 106374,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      60,
+      122,
+      39
+     ],
+     [
+      454,
+      430,
+      301
+     ]
+    ],
+    "box_label_free": [
+     [
+      60,
+      122,
+      39
+     ],
+     [
+      454,
+      430,
+      301
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      62,
+      122,
+      53
+     ],
+     [
+      454,
+      406,
+      284
+     ]
+    ],
+    "box_label_free": [
+     [
+      62,
+      122,
+      53
+     ],
+     [
+      454,
+      406,
+      284
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_010",
+   "tumor_vox": 27311,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      56,
+      86,
+      0
+     ],
+     [
+      464,
+      398,
+      241
+     ]
+    ],
+    "box_label_free": [
+     [
+      56,
+      86,
+      0
+     ],
+     [
+      464,
+      398,
+      241
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      56,
+      86,
+      27
+     ],
+     [
+      461,
+      395,
+      238
+     ]
+    ],
+    "box_label_free": [
+     [
+      56,
+      86,
+      27
+     ],
+     [
+      461,
+      395,
+      238
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_014",
+   "tumor_vox": 90435,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      45,
+      96,
+      26
+     ],
+     [
+      483,
+      410,
+      589
+     ]
+    ],
+    "box_label_free": [
+     [
+      45,
+      96,
+      26
+     ],
+     [
+      483,
+      410,
+      589
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      45,
+      95,
+      48
+     ],
+     [
+      483,
+      401,
+      570
+     ]
+    ],
+    "box_label_free": [
+     [
+      45,
+      95,
+      48
+     ],
+     [
+      483,
+      401,
+      570
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_015",
+   "tumor_vox": 1326,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      60,
+      136,
+      31
+     ],
+     [
+      432,
+      408,
+      277
+     ]
+    ],
+    "box_label_free": [
+     [
+      60,
+      136,
+      31
+     ],
+     [
+      432,
+      408,
+      277
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      62,
+      136,
+      51
+     ],
+     [
+      431,
+      405,
+      264
+     ]
+    ],
+    "box_label_free": [
+     [
+      62,
+      136,
+      51
+     ],
+     [
+      431,
+      405,
+      264
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_016",
+   "tumor_vox": 6814,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      78,
+      93,
+      19
+     ],
+     [
+      450,
+      412,
+      228
+     ]
+    ],
+    "box_label_free": [
+     [
+      78,
+      93,
+      19
+     ],
+     [
+      450,
+      412,
+      228
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      79,
+      95,
+      27
+     ],
+     [
+      449,
+      410,
+      226
+     ]
+    ],
+    "box_label_free": [
+     [
+      79,
+      95,
+      27
+     ],
+     [
+      449,
+      410,
+      226
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_018",
+   "tumor_vox": 9239,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      55,
+      116,
+      33
+     ],
+     [
+      452,
+      419,
+      273
+     ]
+    ],
+    "box_label_free": [
+     [
+      55,
+      116,
+      33
+     ],
+     [
+      452,
+      419,
+      273
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      56,
+      117,
+      39
+     ],
+     [
+      452,
+      416,
+      265
+     ]
+    ],
+    "box_label_free": [
+     [
+      56,
+      117,
+      39
+     ],
+     [
+      452,
+      416,
+      265
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_020",
+   "tumor_vox": 6086,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      49,
+      141,
+      0
+     ],
+     [
+      474,
+      423,
+      314
+     ]
+    ],
+    "box_label_free": [
+     [
+      49,
+      141,
+      0
+     ],
+     [
+      474,
+      423,
+      314
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      49,
+      143,
+      33
+     ],
+     [
+      472,
+      422,
+      307
+     ]
+    ],
+    "box_label_free": [
+     [
+      49,
+      143,
+      33
+     ],
+     [
+      472,
+      422,
+      307
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_022",
+   "tumor_vox": 133455,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      81,
+      115,
+      0
+     ],
+     [
+      434,
+      396,
+      483
+     ]
+    ],
+    "box_label_free": [
+     [
+      81,
+      115,
+      0
+     ],
+     [
+      434,
+      396,
+      483
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      83,
+      115,
+      102
+     ],
+     [
+      433,
+      397,
+      454
+     ]
+    ],
+    "box_label_free": [
+     [
+      83,
+      115,
+      102
+     ],
+     [
+      433,
+      397,
+      454
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_023",
+   "tumor_vox": 11664,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      53,
+      135,
+      0
+     ],
+     [
+      449,
+      428,
+      531
+     ]
+    ],
+    "box_label_free": [
+     [
+      53,
+      135,
+      0
+     ],
+     [
+      449,
+      428,
+      531
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      54,
+      136,
+      78
+     ],
+     [
+      447,
+      428,
+      505
+     ]
+    ],
+    "box_label_free": [
+     [
+      54,
+      136,
+      78
+     ],
+     [
+      447,
+      428,
+      505
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_025",
+   "tumor_vox": 6123,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      40,
+      156,
+      25
+     ],
+     [
+      459,
+      429,
+      376
+     ]
+    ],
+    "box_label_free": [
+     [
+      40,
+      156,
+      25
+     ],
+     [
+      459,
+      429,
+      376
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      42,
+      156,
+      32
+     ],
+     [
+      459,
+      421,
+      352
+     ]
+    ],
+    "box_label_free": [
+     [
+      42,
+      156,
+      32
+     ],
+     [
+      459,
+      421,
+      352
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_026",
+   "tumor_vox": 29278,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      63,
+      107,
+      0
+     ],
+     [
+      455,
+      412,
+      227
+     ]
+    ],
+    "box_label_free": [
+     [
+      63,
+      107,
+      0
+     ],
+     [
+      455,
+      412,
+      227
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      66,
+      109,
+      0
+     ],
+     [
+      454,
+      392,
+      222
+     ]
+    ],
+    "box_label_free": [
+     [
+      66,
+      109,
+      0
+     ],
+     [
+      454,
+      392,
+      222
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_027",
+   "tumor_vox": 31832,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      71,
+      102,
+      0
+     ],
+     [
+      470,
+      395,
+      264
+     ]
+    ],
+    "box_label_free": [
+     [
+      71,
+      102,
+      0
+     ],
+     [
+      470,
+      395,
+      264
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      70,
+      103,
+      7
+     ],
+     [
+      470,
+      395,
+      262
+     ]
+    ],
+    "box_label_free": [
+     [
+      70,
+      103,
+      7
+     ],
+     [
+      470,
+      395,
+      262
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_028",
+   "tumor_vox": 146740,
+   "threshold": {
+    "box_changed": true,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      60,
+      110,
+      35
+     ],
+     [
+      446,
+      421,
+      251
+     ]
+    ],
+    "box_label_free": [
+     [
+      60,
+      112,
+      35
+     ],
+     [
+      446,
+      421,
+      251
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": true,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      60,
+      110,
+      46
+     ],
+     [
+      445,
+      395,
+      251
+     ]
+    ],
+    "box_label_free": [
+     [
+      60,
+      113,
+      46
+     ],
+     [
+      445,
+      395,
+      251
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_029",
+   "tumor_vox": 3924,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      67,
+      111,
+      0
+     ],
+     [
+      462,
+      429,
+      255
+     ]
+    ],
+    "box_label_free": [
+     [
+      67,
+      111,
+      0
+     ],
+     [
+      462,
+      429,
+      255
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      68,
+      111,
+      43
+     ],
+     [
+      461,
+      401,
+      250
+     ]
+    ],
+    "box_label_free": [
+     [
+      68,
+      111,
+      43
+     ],
+     [
+      461,
+      401,
+      250
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_031",
+   "tumor_vox": 114907,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      40,
+      112,
+      19
+     ],
+     [
+      480,
+      408,
+      304
+     ]
+    ],
+    "box_label_free": [
+     [
+      40,
+      112,
+      19
+     ],
+     [
+      480,
+      408,
+      304
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      38,
+      112,
+      46
+     ],
+     [
+      479,
+      409,
+      302
+     ]
+    ],
+    "box_label_free": [
+     [
+      38,
+      112,
+      46
+     ],
+     [
+      479,
+      409,
+      302
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_033",
+   "tumor_vox": 39103,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      85,
+      103,
+      25
+     ],
+     [
+      452,
+      407,
+      260
+     ]
+    ],
+    "box_label_free": [
+     [
+      85,
+      103,
+      25
+     ],
+     [
+      452,
+      407,
+      260
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      88,
+      102,
+      56
+     ],
+     [
+      450,
+      402,
+      251
+     ]
+    ],
+    "box_label_free": [
+     [
+      88,
+      102,
+      56
+     ],
+     [
+      450,
+      402,
+      251
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_034",
+   "tumor_vox": 14115,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      62,
+      116,
+      7
+     ],
+     [
+      454,
+      421,
+      296
+     ]
+    ],
+    "box_label_free": [
+     [
+      62,
+      116,
+      7
+     ],
+     [
+      454,
+      421,
+      296
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      63,
+      117,
+      61
+     ],
+     [
+      453,
+      368,
+      284
+     ]
+    ],
+    "box_label_free": [
+     [
+      63,
+      117,
+      61
+     ],
+     [
+      453,
+      368,
+      284
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_036",
+   "tumor_vox": 10692,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      40,
+      114,
+      13
+     ],
+     [
+      470,
+      442,
+      267
+     ]
+    ],
+    "box_label_free": [
+     [
+      40,
+      114,
+      13
+     ],
+     [
+      470,
+      442,
+      267
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      43,
+      116,
+      33
+     ],
+     [
+      469,
+      442,
+      259
+     ]
+    ],
+    "box_label_free": [
+     [
+      43,
+      116,
+      33
+     ],
+     [
+      469,
+      442,
+      259
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_037",
+   "tumor_vox": 756,
+   "threshold": {
+    "box_changed": true,
+    "tumor_vox_outside_labelfree_box": 756,
+    "box_with_tumor": [
+     [
+      260,
+      222,
+      0
+     ],
+     [
+      403,
+      436,
+      117
+     ]
+    ],
+    "box_label_free": [
+     [
+      308,
+      339,
+      0
+     ],
+     [
+      403,
+      436,
+      25
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      47,
+      124,
+      2
+     ],
+     [
+      481,
+      407,
+      124
+     ]
+    ],
+    "box_label_free": [
+     [
+      47,
+      124,
+      2
+     ],
+     [
+      481,
+      407,
+      124
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_038",
+   "tumor_vox": 3421,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      37,
+      88,
+      4
+     ],
+     [
+      486,
+      430,
+      125
+     ]
+    ],
+    "box_label_free": [
+     [
+      37,
+      88,
+      4
+     ],
+     [
+      486,
+      430,
+      125
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      39,
+      89,
+      8
+     ],
+     [
+      485,
+      400,
+      124
+     ]
+    ],
+    "box_label_free": [
+     [
+      39,
+      89,
+      8
+     ],
+     [
+      485,
+      400,
+      124
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_041",
+   "tumor_vox": 75634,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      69,
+      119,
+      0
+     ],
+     [
+      446,
+      418,
+      239
+     ]
+    ],
+    "box_label_free": [
+     [
+      69,
+      119,
+      0
+     ],
+     [
+      446,
+      418,
+      239
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      70,
+      121,
+      60
+     ],
+     [
+      443,
+      380,
+      238
+     ]
+    ],
+    "box_label_free": [
+     [
+      70,
+      121,
+      60
+     ],
+     [
+      443,
+      380,
+      238
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_042",
+   "tumor_vox": 4489,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      54,
+      125,
+      0
+     ],
+     [
+      466,
+      387,
+      125
+     ]
+    ],
+    "box_label_free": [
+     [
+      54,
+      125,
+      0
+     ],
+     [
+      466,
+      387,
+      125
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      53,
+      126,
+      5
+     ],
+     [
+      464,
+      377,
+      122
+     ]
+    ],
+    "box_label_free": [
+     [
+      53,
+      126,
+      5
+     ],
+     [
+      464,
+      377,
+      122
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_043",
+   "tumor_vox": 1912,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      40,
+      117,
+      0
+     ],
+     [
+      465,
+      394,
+      129
+     ]
+    ],
+    "box_label_free": [
+     [
+      40,
+      117,
+      0
+     ],
+     [
+      465,
+      394,
+      129
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      40,
+      118,
+      7
+     ],
+     [
+      461,
+      378,
+      125
+     ]
+    ],
+    "box_label_free": [
+     [
+      40,
+      118,
+      7
+     ],
+     [
+      461,
+      378,
+      125
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_044",
+   "tumor_vox": 13700,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      73,
+      138,
+      10
+     ],
+     [
+      456,
+      392,
+      281
+     ]
+    ],
+    "box_label_free": [
+     [
+      73,
+      138,
+      10
+     ],
+     [
+      456,
+      392,
+      281
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      74,
+      138,
+      33
+     ],
+     [
+      456,
+      371,
+      271
+     ]
+    ],
+    "box_label_free": [
+     [
+      74,
+      138,
+      33
+     ],
+     [
+      456,
+      371,
+      271
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_045",
+   "tumor_vox": 6923,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      68,
+      126,
+      0
+     ],
+     [
+      446,
+      378,
+      252
+     ]
+    ],
+    "box_label_free": [
+     [
+      68,
+      126,
+      0
+     ],
+     [
+      446,
+      378,
+      252
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      70,
+      127,
+      0
+     ],
+     [
+      445,
+      378,
+      240
+     ]
+    ],
+    "box_label_free": [
+     [
+      70,
+      127,
+      0
+     ],
+     [
+      445,
+      378,
+      240
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_046",
+   "tumor_vox": 13281,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      51,
+      104,
+      0
+     ],
+     [
+      464,
+      408,
+      226
+     ]
+    ],
+    "box_label_free": [
+     [
+      51,
+      104,
+      0
+     ],
+     [
+      464,
+      408,
+      226
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      54,
+      105,
+      0
+     ],
+     [
+      462,
+      407,
+      221
+     ]
+    ],
+    "box_label_free": [
+     [
+      54,
+      105,
+      0
+     ],
+     [
+      462,
+      407,
+      221
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_047",
+   "tumor_vox": 8167,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      85,
+      92,
+      199
+     ],
+     [
+      460,
+      404,
+      636
+     ]
+    ],
+    "box_label_free": [
+     [
+      85,
+      92,
+      199
+     ],
+     [
+      460,
+      404,
+      636
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      85,
+      93,
+      323
+     ],
+     [
+      458,
+      388,
+      632
+     ]
+    ],
+    "box_label_free": [
+     [
+      85,
+      93,
+      323
+     ],
+     [
+      458,
+      388,
+      632
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_048",
+   "tumor_vox": 4004,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      70,
+      104,
+      0
+     ],
+     [
+      438,
+      375,
+      322
+     ]
+    ],
+    "box_label_free": [
+     [
+      70,
+      104,
+      0
+     ],
+     [
+      438,
+      375,
+      322
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      70,
+      106,
+      48
+     ],
+     [
+      438,
+      376,
+      321
+     ]
+    ],
+    "box_label_free": [
+     [
+      70,
+      106,
+      48
+     ],
+     [
+      438,
+      376,
+      321
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_049",
+   "tumor_vox": 7852,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      49,
+      85,
+      0
+     ],
+     [
+      455,
+      378,
+      291
+     ]
+    ],
+    "box_label_free": [
+     [
+      49,
+      85,
+      0
+     ],
+     [
+      455,
+      378,
+      291
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      50,
+      86,
+      27
+     ],
+     [
+      453,
+      365,
+      274
+     ]
+    ],
+    "box_label_free": [
+     [
+      50,
+      86,
+      27
+     ],
+     [
+      453,
+      365,
+      274
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_051",
+   "tumor_vox": 7978,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      51,
+      100,
+      0
+     ],
+     [
+      472,
+      441,
+      155
+     ]
+    ],
+    "box_label_free": [
+     [
+      51,
+      100,
+      0
+     ],
+     [
+      472,
+      441,
+      155
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      50,
+      101,
+      38
+     ],
+     [
+      469,
+      407,
+      151
+     ]
+    ],
+    "box_label_free": [
+     [
+      50,
+      101,
+      38
+     ],
+     [
+      469,
+      407,
+      151
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_053",
+   "tumor_vox": 338475,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      98,
+      147,
+      0
+     ],
+     [
+      429,
+      409,
+      252
+     ]
+    ],
+    "box_label_free": [
+     [
+      98,
+      147,
+      0
+     ],
+     [
+      429,
+      409,
+      252
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      100,
+      148,
+      14
+     ],
+     [
+      429,
+      390,
+      238
+     ]
+    ],
+    "box_label_free": [
+     [
+      100,
+      148,
+      14
+     ],
+     [
+      429,
+      390,
+      238
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_054",
+   "tumor_vox": 9201,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      46,
+      109,
+      0
+     ],
+     [
+      465,
+      423,
+      241
+     ]
+    ],
+    "box_label_free": [
+     [
+      46,
+      109,
+      0
+     ],
+     [
+      465,
+      423,
+      241
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      46,
+      110,
+      0
+     ],
+     [
+      466,
+      422,
+      234
+     ]
+    ],
+    "box_label_free": [
+     [
+      46,
+      110,
+      0
+     ],
+     [
+      466,
+      422,
+      234
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_055",
+   "tumor_vox": 34117,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      62,
+      114,
+      0
+     ],
+     [
+      456,
+      402,
+      242
+     ]
+    ],
+    "box_label_free": [
+     [
+      62,
+      114,
+      0
+     ],
+     [
+      456,
+      402,
+      242
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      62,
+      114,
+      7
+     ],
+     [
+      453,
+      398,
+      233
+     ]
+    ],
+    "box_label_free": [
+     [
+      62,
+      114,
+      7
+     ],
+     [
+      453,
+      398,
+      233
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_057",
+   "tumor_vox": 3128,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      50,
+      112,
+      0
+     ],
+     [
+      455,
+      420,
+      112
+     ]
+    ],
+    "box_label_free": [
+     [
+      50,
+      112,
+      0
+     ],
+     [
+      455,
+      420,
+      112
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      50,
+      112,
+      0
+     ],
+     [
+      454,
+      396,
+      109
+     ]
+    ],
+    "box_label_free": [
+     [
+      50,
+      112,
+      0
+     ],
+     [
+      454,
+      396,
+      109
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_058",
+   "tumor_vox": 878,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      67,
+      130,
+      0
+     ],
+     [
+      450,
+      398,
+      241
+     ]
+    ],
+    "box_label_free": [
+     [
+      67,
+      130,
+      0
+     ],
+     [
+      450,
+      398,
+      241
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      67,
+      131,
+      2
+     ],
+     [
+      449,
+      364,
+      236
+     ]
+    ],
+    "box_label_free": [
+     [
+      67,
+      131,
+      2
+     ],
+     [
+      449,
+      364,
+      236
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_059",
+   "tumor_vox": 1865,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      86,
+      126,
+      0
+     ],
+     [
+      460,
+      378,
+      218
+     ]
+    ],
+    "box_label_free": [
+     [
+      86,
+      126,
+      0
+     ],
+     [
+      460,
+      378,
+      218
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      87,
+      125,
+      0
+     ],
+     [
+      458,
+      376,
+      211
+     ]
+    ],
+    "box_label_free": [
+     [
+      87,
+      125,
+      0
+     ],
+     [
+      458,
+      376,
+      211
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_061",
+   "tumor_vox": 1663,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      68,
+      119,
+      0
+     ],
+     [
+      438,
+      401,
+      211
+     ]
+    ],
+    "box_label_free": [
+     [
+      68,
+      119,
+      0
+     ],
+     [
+      438,
+      401,
+      211
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      70,
+      120,
+      0
+     ],
+     [
+      438,
+      392,
+      206
+     ]
+    ],
+    "box_label_free": [
+     [
+      70,
+      120,
+      0
+     ],
+     [
+      438,
+      392,
+      206
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_062",
+   "tumor_vox": 5965,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      35,
+      111,
+      0
+     ],
+     [
+      466,
+      416,
+      243
+     ]
+    ],
+    "box_label_free": [
+     [
+      35,
+      111,
+      0
+     ],
+     [
+      466,
+      416,
+      243
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      40,
+      114,
+      2
+     ],
+     [
+      465,
+      413,
+      234
+     ]
+    ],
+    "box_label_free": [
+     [
+      40,
+      114,
+      2
+     ],
+     [
+      465,
+      413,
+      234
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_064",
+   "tumor_vox": 147568,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      38,
+      62,
+      11
+     ],
+     [
+      474,
+      442,
+      248
+     ]
+    ],
+    "box_label_free": [
+     [
+      38,
+      62,
+      11
+     ],
+     [
+      474,
+      442,
+      248
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      38,
+      60,
+      38
+     ],
+     [
+      469,
+      439,
+      234
+     ]
+    ],
+    "box_label_free": [
+     [
+      38,
+      60,
+      38
+     ],
+     [
+      469,
+      439,
+      234
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_065",
+   "tumor_vox": 31406,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      41,
+      89,
+      0
+     ],
+     [
+      455,
+      460,
+      128
+     ]
+    ],
+    "box_label_free": [
+     [
+      41,
+      89,
+      0
+     ],
+     [
+      455,
+      460,
+      128
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      42,
+      87,
+      0
+     ],
+     [
+      453,
+      445,
+      123
+     ]
+    ],
+    "box_label_free": [
+     [
+      42,
+      87,
+      0
+     ],
+     [
+      453,
+      445,
+      123
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_066",
+   "tumor_vox": 8045,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      65,
+      129,
+      0
+     ],
+     [
+      433,
+      408,
+      241
+     ]
+    ],
+    "box_label_free": [
+     [
+      65,
+      129,
+      0
+     ],
+     [
+      433,
+      408,
+      241
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      68,
+      129,
+      4
+     ],
+     [
+      431,
+      403,
+      234
+     ]
+    ],
+    "box_label_free": [
+     [
+      68,
+      129,
+      4
+     ],
+     [
+      431,
+      403,
+      234
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_069",
+   "tumor_vox": 1079,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      70,
+      132,
+      0
+     ],
+     [
+      435,
+      441,
+      242
+     ]
+    ],
+    "box_label_free": [
+     [
+      70,
+      132,
+      0
+     ],
+     [
+      435,
+      441,
+      242
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      70,
+      131,
+      7
+     ],
+     [
+      434,
+      407,
+      240
+     ]
+    ],
+    "box_label_free": [
+     [
+      70,
+      131,
+      7
+     ],
+     [
+      434,
+      407,
+      240
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_070",
+   "tumor_vox": 3080,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      43,
+      108,
+      0
+     ],
+     [
+      471,
+      411,
+      265
+     ]
+    ],
+    "box_label_free": [
+     [
+      43,
+      108,
+      0
+     ],
+     [
+      471,
+      411,
+      265
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      42,
+      110,
+      0
+     ],
+     [
+      470,
+      406,
+      264
+     ]
+    ],
+    "box_label_free": [
+     [
+      42,
+      110,
+      0
+     ],
+     [
+      470,
+      406,
+      264
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_071",
+   "tumor_vox": 2731,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      51,
+      90,
+      0
+     ],
+     [
+      503,
+      390,
+      289
+     ]
+    ],
+    "box_label_free": [
+     [
+      51,
+      90,
+      0
+     ],
+     [
+      503,
+      390,
+      289
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      51,
+      90,
+      31
+     ],
+     [
+      503,
+      387,
+      287
+     ]
+    ],
+    "box_label_free": [
+     [
+      51,
+      90,
+      31
+     ],
+     [
+      503,
+      387,
+      287
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_073",
+   "tumor_vox": 24325,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      67,
+      100,
+      11
+     ],
+     [
+      436,
+      370,
+      493
+     ]
+    ],
+    "box_label_free": [
+     [
+      67,
+      100,
+      11
+     ],
+     [
+      436,
+      370,
+      493
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      69,
+      101,
+      53
+     ],
+     [
+      435,
+      357,
+      487
+     ]
+    ],
+    "box_label_free": [
+     [
+      69,
+      101,
+      53
+     ],
+     [
+      435,
+      357,
+      487
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_074",
+   "tumor_vox": 71076,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      22,
+      67,
+      0
+     ],
+     [
+      488,
+      429,
+      363
+     ]
+    ],
+    "box_label_free": [
+     [
+      22,
+      67,
+      0
+     ],
+     [
+      488,
+      429,
+      363
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      24,
+      68,
+      42
+     ],
+     [
+      488,
+      429,
+      357
+     ]
+    ],
+    "box_label_free": [
+     [
+      24,
+      68,
+      42
+     ],
+     [
+      488,
+      429,
+      357
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_075",
+   "tumor_vox": 17818,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      38,
+      56,
+      0
+     ],
+     [
+      459,
+      366,
+      423
+     ]
+    ],
+    "box_label_free": [
+     [
+      38,
+      56,
+      0
+     ],
+     [
+      459,
+      366,
+      423
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      41,
+      56,
+      0
+     ],
+     [
+      460,
+      364,
+      404
+     ]
+    ],
+    "box_label_free": [
+     [
+      41,
+      56,
+      0
+     ],
+     [
+      460,
+      364,
+      404
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_078",
+   "tumor_vox": 6275,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      13,
+      89,
+      0
+     ],
+     [
+      495,
+      441,
+      115
+     ]
+    ],
+    "box_label_free": [
+     [
+      13,
+      89,
+      0
+     ],
+     [
+      495,
+      441,
+      115
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      14,
+      89,
+      0
+     ],
+     [
+      493,
+      438,
+      113
+     ]
+    ],
+    "box_label_free": [
+     [
+      14,
+      89,
+      0
+     ],
+     [
+      493,
+      438,
+      113
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_079",
+   "tumor_vox": 2973,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      79,
+      106,
+      0
+     ],
+     [
+      459,
+      407,
+      251
+     ]
+    ],
+    "box_label_free": [
+     [
+      79,
+      106,
+      0
+     ],
+     [
+      459,
+      407,
+      251
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      82,
+      108,
+      0
+     ],
+     [
+      456,
+      381,
+      246
+     ]
+    ],
+    "box_label_free": [
+     [
+      82,
+      108,
+      0
+     ],
+     [
+      456,
+      381,
+      246
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_080",
+   "tumor_vox": 4883,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      30,
+      99,
+      0
+     ],
+     [
+      473,
+      402,
+      450
+     ]
+    ],
+    "box_label_free": [
+     [
+      30,
+      99,
+      0
+     ],
+     [
+      473,
+      402,
+      450
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      33,
+      102,
+      38
+     ],
+     [
+      469,
+      396,
+      450
+     ]
+    ],
+    "box_label_free": [
+     [
+      33,
+      102,
+      38
+     ],
+     [
+      469,
+      396,
+      450
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_081",
+   "tumor_vox": 3080,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      76,
+      115,
+      0
+     ],
+     [
+      444,
+      418,
+      249
+     ]
+    ],
+    "box_label_free": [
+     [
+      76,
+      115,
+      0
+     ],
+     [
+      444,
+      418,
+      249
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      76,
+      117,
+      21
+     ],
+     [
+      443,
+      378,
+      239
+     ]
+    ],
+    "box_label_free": [
+     [
+      76,
+      117,
+      21
+     ],
+     [
+      443,
+      378,
+      239
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_083",
+   "tumor_vox": 1835,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      64,
+      106,
+      0
+     ],
+     [
+      461,
+      434,
+      256
+     ]
+    ],
+    "box_label_free": [
+     [
+      64,
+      106,
+      0
+     ],
+     [
+      461,
+      434,
+      256
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      66,
+      105,
+      21
+     ],
+     [
+      458,
+      415,
+      256
+     ]
+    ],
+    "box_label_free": [
+     [
+      66,
+      105,
+      21
+     ],
+     [
+      458,
+      415,
+      256
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_084",
+   "tumor_vox": 23107,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      56,
+      123,
+      0
+     ],
+     [
+      438,
+      423,
+      241
+     ]
+    ],
+    "box_label_free": [
+     [
+      56,
+      123,
+      0
+     ],
+     [
+      438,
+      423,
+      241
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      57,
+      124,
+      0
+     ],
+     [
+      438,
+      400,
+      239
+     ]
+    ],
+    "box_label_free": [
+     [
+      57,
+      124,
+      0
+     ],
+     [
+      438,
+      400,
+      239
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_086",
+   "tumor_vox": 41143,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      38,
+      83,
+      8
+     ],
+     [
+      483,
+      415,
+      260
+     ]
+    ],
+    "box_label_free": [
+     [
+      38,
+      83,
+      8
+     ],
+     [
+      483,
+      415,
+      260
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      39,
+      85,
+      14
+     ],
+     [
+      481,
+      384,
+      253
+     ]
+    ],
+    "box_label_free": [
+     [
+      39,
+      85,
+      14
+     ],
+     [
+      481,
+      384,
+      253
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_092",
+   "tumor_vox": 3131,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      76,
+      131,
+      0
+     ],
+     [
+      428,
+      419,
+      245
+     ]
+    ],
+    "box_label_free": [
+     [
+      76,
+      131,
+      0
+     ],
+     [
+      428,
+      419,
+      245
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      76,
+      133,
+      0
+     ],
+     [
+      427,
+      392,
+      231
+     ]
+    ],
+    "box_label_free": [
+     [
+      76,
+      133,
+      0
+     ],
+     [
+      427,
+      392,
+      231
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_093",
+   "tumor_vox": 2967,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      64,
+      88,
+      0
+     ],
+     [
+      477,
+      430,
+      228
+     ]
+    ],
+    "box_label_free": [
+     [
+      64,
+      88,
+      0
+     ],
+     [
+      477,
+      430,
+      228
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      65,
+      89,
+      2
+     ],
+     [
+      477,
+      431,
+      228
+     ]
+    ],
+    "box_label_free": [
+     [
+      65,
+      89,
+      2
+     ],
+     [
+      477,
+      431,
+      228
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_095",
+   "tumor_vox": 5701,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      61,
+      94,
+      0
+     ],
+     [
+      479,
+      435,
+      231
+     ]
+    ],
+    "box_label_free": [
+     [
+      61,
+      94,
+      0
+     ],
+     [
+      479,
+      435,
+      231
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      63,
+      95,
+      0
+     ],
+     [
+      480,
+      425,
+      226
+     ]
+    ],
+    "box_label_free": [
+     [
+      63,
+      95,
+      0
+     ],
+     [
+      480,
+      425,
+      226
+     ]
+    ]
+   }
+  },
+  {
+   "case": "lung_096",
+   "tumor_vox": 966,
+   "threshold": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      53,
+      98,
+      0
+     ],
+     [
+      470,
+      446,
+      251
+     ]
+    ],
+    "box_label_free": [
+     [
+      53,
+      98,
+      0
+     ],
+     [
+      470,
+      446,
+      251
+     ]
+    ]
+   },
+   "anat": {
+    "box_changed": false,
+    "tumor_vox_outside_labelfree_box": 0,
+    "box_with_tumor": [
+     [
+      54,
+      101,
+      9
+     ],
+     [
+      469,
+      407,
+      246
+     ]
+    ],
+    "box_label_free": [
+     [
+      54,
+      101,
+      9
+     ],
+     [
+      469,
+      407,
+      246
+     ]
+    ]
+   }
+  }
+ ]
+}

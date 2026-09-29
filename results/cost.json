@@ -1,0 +1,27 @@
+{
+ "patch": [
+  64,
+  96,
+  96
+ ],
+ "infer_patch": [
+  96,
+  128,
+  128
+ ],
+ "typical_volume": [
+  207,
+  162,
+  215
+ ],
+ "device": "cpu",
+ "models": {
+  "ours": {
+   "params_M": 3.176799,
+   "gflops_train_patch": 37.896781824,
+   "gflops_infer_window": 101.058084864,
+   "windows_per_case": 24,
+   "gflops_per_case_tta2": 4850.788073472
+  }
+ }
+}
